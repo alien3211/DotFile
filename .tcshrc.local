@@ -1,0 +1,150 @@
+#############################################################################
+##
+## .tcshrc.local
+##
+## Author: Simos Xenitellis (simos.lists@googlemail.com)
+##
+## This is the .tcshrc.local file, part of the TCSHRC project
+## at http://tcshrc.sourceforge.net
+##
+## Here you add your aliases, sets, completions and bindkeys that you want
+## to override from the default settings.
+
+# unset prompt
+# set prompt=""
+# ### Prompt ####
+# if ( $?CVIEW ) then
+#     set prompt="$prompt\[%{\e[1;31m%}`ct pwv -short`%{\e[0m%}\]"
+# endif
+# 
+# if ( $?ARCRELEASE ) then
+#     set prompt="$prompt\[%{\e[1;32m%}$ARCRELEASE%{\e[0m%}\]"
+# endif
+# set prompt="\
+# $prompt\[%{\e[1;36m%}%n@%m%{\e[0m%}\] %{\033[1;32m%}%/%{\033[0m%} %?\
+# %B%#%b "
+
+
+# unset prompt
+# set prompt=""
+# ### Prompt ####
+# if ( $?ARCRELEASE ) then
+#     set prompt="$prompt\[%{\e[1;31m%}`ct pwv -short`%{\e[0m%}\]"
+#     set prompt="$prompt\[%{\e[1;32m%}$ARCRELEASE%{\e[0m%}\]"
+# endif
+# set prompt="\
+# $prompt\[%{\e[1;36m%}%n@%m%{\e[0m%}\] %?\
+# \[%{\033[1;32m%}%~%{\033[0m%}\]%B%#%b "
+ 
+#set prompt="%{\e[32;1m%}%n%{\e[37m%}@%{\e[33m%}%m%{\e[37m%}:%{\e[36m%}%~%{\e[37m%}"\$"%{\e[0m%} "
+#setenv PROMPT "$prompt"
+
+
+set c_branch="%{\\e[1;31m%}"    # same
+set   c_send="%{\e[1;31m%}"     # same
+set    c_dir="%{\\e[1;32m%}"    # %{\\e[7;90m%}
+set   c_proj="%{\e[1;32m%}"     # %{\e[7;90m%}
+set  c_hname="%{\e[1;36m%}"     # %{\e[1;39m%}
+set    c_sha="%{\\e[1;90m%}"    # same
+set      end="%{\\e[0m%}"
+set    p_end="%{\e[0m%}"
+ 
+alias getCurrentGitSHABranch '~/my_project/gitprompt.pl'
+alias getCurrentHostName 'printf "%s" "\[$c_hname%n@%m$p_end\]$c_send"'
+alias getCurrentDir 'pwd | sed "s/\(.*\)/$end\[$c_dir\1$end\]/"'
+ 
+### Prompt ####
+alias precmd set 'prompt="\n`getCurrentGitSHABranch`%b`getCurrentHostName` `if ("$?" != 0) printf "%s" $?` \n`getCurrentDir`%B%#%b "'
+
+
+
+# Alias which can convert below records to function
+# func <name>
+# <command>
+# <command>
+# "cnuf"
+# PATH to origin /proj/toolswarehouse/linux/production/wh/dtd/tools/catrbs/3.679/env_setup/func.tcsh
+# Paramiter !:1 !:2 ... !:*
+
+alias func '\\
+<<"cnuf" sed -e '"'"'\\
+#\\!/bin/sed -f\\
+#\\
+## Make the eval command\\
+# quote quotes\\
+s/'"'"'"'"'"'"'"'"'/'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'/g;\\
+# enclose with quotes\\
+1s/^/eval '"'"'"'"'"'"'"'"'/;\\
+$s/$/'"'"'"'"'"'"'"'"'/;\\
+#\\
+## Make the alias command\\
+# escape exclamation marks and newlines\\
+s/\\!/\\\\!/g;\\
+s/$/\\\\/g\\
+# quote quotes\\
+s/'"'"'"'"'"'"'"'"'/'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'"'/g;\\
+# enclose with quotes\\
+1s/^/alias @alias_name@ '"'"'"'"'"'"'"'"'/;\\
+$a\\\
+;echo >/dev/null'"'"'"'"'"'"'"'"'\\
+#^^^^^^^^^^^^^^^ (workaround against printing of arguments)\\
+'"'"' | \\
+    sed -e s/@alias_name@/\!\!:1/ >/tmp/make_alias$$; \\
+    source /tmp/make_alias$$; \\
+    \rm -f /tmp/make_alias$$; \\
+'
+
+func git_branch
+    set current_branch=`/bin/bash -c 'git branch 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \(.*\)/(\1)/" ' `
+    set prompt="[%{\033]0;%n@%m:%~\007%}%n@%m %{\033[01;34m%}%C%{\033[0m%}]%{\033[01;31m%}$current_branch%{\033[0m%}%# %{\033[0m%}"
+"cnuf"
+
+func add_to_path
+     set dir=!:1
+     set var=!:2
+     set tmp=`eval echo \$$var | sed -e "s|\${dir}:||"`
+     eval setenv $var ${dir}:${tmp}
+"cnuf"
+
+func set_prompt
+    switch ($TERM)
+    case "xterm*":
+    case "screen*":
+	[ $?OWN_TCSH_PROMPT = 0 ] && alias precmd git_branch
+        breaksw
+    default:
+        breaksw
+endsw
+"cnuf"
+
+func module_add
+     set mod=!!:1
+     module rm $mod:h
+     module rm $mod:h
+     module use /app/rbs/modules/
+     module add $mod
+"cnuf"
+
+func alias_set
+     set aliasname=!:1
+     set aliasstring=!:2
+     alias $aliasname $aliasstring
+"cnuf"
+
+func unset_var
+    set var=!:1
+    unsetenv $var
+"cnuf"
+
+func export_var
+    set name=!:1
+    set word=!:2
+    unset $name
+    if ( "$name" == "TOP_DIR" ) then
+        setenv $name $word:h:h
+    else if ( "$name" == "REPOROOT" ) then
+        setenv $name $word:h
+    else
+        setenv $name $word
+    endif
+"cnuf"

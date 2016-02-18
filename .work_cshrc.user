@@ -1,0 +1,114 @@
+#setenv PATH "~/repo/art_ata/artfw/tools/art/bin:${PATH}"
+#setenv WCDMASTE_ROOT /proj/rnckidc/wcdmaroot_rnc_xft
+setenv EDITOR vim
+setenv WINEDITOR vim
+
+	#start: My configuration
+module rm vim
+module rm firefox
+module rm j2re
+module rm gcc
+
+module add ctags
+module add cscope
+module add tmux/1.8
+#module add qtcreator	
+module add erlang/otp_R14B04
+module add perl
+module add vim
+module add matlab
+#module add gawk
+module add rsync/3.0.7
+module add nano
+module add nedit
+module add firefox/22.0
+#module add pycharm
+#module add graphviz/2.26.3
+module add tig
+#module add git-cola
+module add gcc/4.8.1
+#module add clang/3.4
+module add j2re/1.7.0_25
+module add jdk/1.7.0_25
+module add j2sdk/1.7.0_25
+module add sqlite/3.7.15.2
+module add maven/3.2.1 
+module add git
+#module add python/2.7.9
+module add python/2.7-addons-ipython-2.3
+module add gtk/2.24.23
+module add pygtk/2.24.0-2.7
+module add pycharm/3.1.3
+	#end: My configuration
+
+
+
+set history = 900000 # History remembered is 2000
+set savehist = (900000 merge) # Save and merge with existing saved
+set histfile = ~/.tcsh_history
+set color=ls-F
+set visiblebell
+set matchbeep=notunique
+set filec
+set autolist
+unset recexact
+
+### Environment issues fixes ###
+if (`uname` == Linux) then
+	limit descriptors 4096
+endif
+
+#Proxy for use when installing eclipse for MAO/AUE
+#setenv http_proxy http://www-proxy.ericsson.se:8080/
+#setenv https_proxy http://www-proxy.ericsson.se:8080/
+
+setenv http_proxy http://hubsekiproxy.rnd.ericsson.se:8080/
+setenv https_proxy http://hubsekiproxy.rnd.ericsson.se:8080/
+setenv no_proxy "localhost, 127.0.0.1, .ericsson.se, .ericsson.com"
+
+
+# unset prompt
+# set prompt=""
+# ### Prompt ####
+# if ( $?ARCRELEASE ) then
+#     set prompt="$prompt\[%{\e[1;31m%}`ct pwv -short`%{\e[0m%}\]"
+#     set prompt="$prompt\[%{\e[1;32m%}$ARCRELEASE%{\e[0m%}\]"
+# endif
+# set prompt="\
+# $prompt\[%{\e[1;36m%}%n@%m%{\e[0m%}\] %?\
+# \[%{\033[1;32m%}%~%{\033[0m%}\]%B%#%b "
+# 
+# #set prompt="%{\e[32;1m%}%n%{\e[37m%}@%{\e[33m%}%m%{\e[37m%}:%{\e[36m%}%~%{\e[37m%}"\$"%{\e[0m%} "
+# #setenv PROMPT "$prompt"
+ 
+
+ 
+
+# set python Start up file
+#setenv PYTHONSTARTUP ~/.pythonrc
+#if( $?PYTHONPATH != 1 ) then
+#    setenv PYTHONPATH ""
+#endif
+#setenv PYTHONPATH "/home/ealatet/usr/lib/python2.7/site-packages:$PYTHONPATH"
+
+##alias getCurrentDir 'if ( $?WORKDIR ) echo $PWD | & sed "s/\/myrepo\/users\/ealatet\/git\/root\/rnc\/$WORKDIR\/\(.*\)/\1/"\echo "%~" '
+#alias getCurrentGitBranch 'git rev-parse --symbolic-full-name --abbrev-ref HEAD |& sed -n "/ /d; s/\(..*\)/%{\\e[0m(%{\\e[1;31m\1%{\\e[0m)/p"'
+#alias getCurrentSHA 'git log --pretty=format:'%h' -n 1 |& sed -n "/ /d; s/\(..*\)/%{\\e[0m(%{\\e[0;90m\1%{\\e[0m)/p"'
+#alias getCurrentWorkDir "pwd | grep -oP '(wd.*?/.*?)' | sed 's/\(.*\)\//\1/'"
+#alias getCurrentDir 'set WDIR=`getCurrentWorkDir`; pwd | sed "s/\/myrepo\/users\/$USER\/git\/root\/rnc\/$WDIR\/\(.*\)/\1/"'
+#alias getCurrentARCRELEASE  'if ( $?ARCRELEASE) if ( $ARCRELEASE !~ "*GIT*" ) echo "\n\[%{\e[1;31m%}`ct pwv -short `%{\e[0m%}\][%{\e[1;32m%}$ARCRELEASE%{\e[0m%}\]"'
+#
+#alias precmd set 'prompt="\n`getCurrentSHA`%B`getCurrentGitBranch``getCurrentARCRELEASE`%b\[%{\e[1;36m%}%n@%m%{\e[0m%}\]%{\e[1;31m%} `if ("$?" != 0) echo "$?"` \n%{\e[0m%}\[%{\033[1;32m%}`getCurrentDir`%{\033[0m%}\]%{\e[1;31m%}%{\e[0m%}%B%#%b "'
+
+
+
+
+
+#alias precmd set 'prompt="`getCurrentSHA``getCurrentGitBranch``python /home/ealatet/my_project/python/prompt/makeprompt.py `"'
+
+#### Aliases ####
+source ~/.aliases
+ 
+#source /home/ealatet/TTK/Config/TTKAlias.sh
+ 
+#setenv PATH "`echo $PATH | sed 's/:\/app\/vbuild\/RHEL6-x86_64\/python\/2.7.9\/bin//'`"

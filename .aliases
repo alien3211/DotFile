@@ -1,0 +1,23 @@
+# ENV Aliases
+alias tmux 'tmux -2'
+alias new_tmux '~/my_project/tmux/./new_develop_session \!:1 ; tmux attach'
+alias grep 'grep --colour=auto'
+alias history 'history | grep -iv "\(history\|exit\|ericsson.se\)"'
+alias dodawanie 'echo "----------FILE: '\!:1'-----------\n" >> .all ; cat \!:1 >> .all'
+alias backup_profile 'python ~/my_project/python/backupfile.py -t ~/backup -c PROFILE ~/.mozilla/firefox'
+alias ls "ls --color"
+alias ll "ls -hlaFq --color --group-directories-first \!* | grep -v '.*\[01;34m\.\.\?[^a-z]\[0m/' "
+alias e "echo"
+alias ne 'nedit'
+alias df "df -Tha --total"
+alias du "du -ach "
+alias free "free -mt "
+alias ps "ps auxf"
+alias listatest "ps -u `whoami` | grep tcsh | grep -v grep | awk '{print "\$1"}'"
+alias cleanBlankCharts "sed -i 's/[ \t]\+"\$"//g'"
+
+## GIT Aliases
+alias clogged 'echo ; last | grep logge | cut -d " " -f1 | sort -u | grep -n ""'
+alias GitCurrentBranch 'git branch |& grep "*" |& cut -c3- |& tr -d ")" |& tr -d "(" |& sed "s/\(.*\)/ (\1)/" '
+alias goldSentense 'whatis "`\ls /bin |shuf -n 1`" | sed "s/\([^(]*\)\([^)]*)\)\(.*\)/\n\x1b[1;92m\1\x1b[1;31m\2\x1b[0m\3/"'
+

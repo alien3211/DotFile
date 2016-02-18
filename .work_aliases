@@ -1,0 +1,140 @@
+## CC Aliases
+##alias lsco "cleartool lsco -a -me -cview"
+##alias lscoo "cleartool lsco -avobs -me -cview | awk '{print "\$5"}'"
+##alias my_view 'ct lsview | grep -i "ealatet_"'
+##alias findbranch '~/scripts/findbranch.sh \!:1'
+##alias fbranch 'ct lstype -kind brtype -invob \!:1 | grep -i \!:2'
+##alias checkouty 'ct lsco -cview -r'
+##alias cflabel 'ct find `pwd` -version "lbtype(\!:1)" -print'
+##alias cfbranch 'ct find `pwd` -version "version(.../\!:1/LATEST)" -print'
+##alias xt 'xlsvtree'
+#alias LMModels "cd /vobs/rnc/rrt/rncNode/rncSys/rncLm/"
+
+# Tools Aliases
+alias eclipse "/app/eecs/eclipse/4.4.1/eclipse"
+alias zpm_all '/home/qrapper/bin/zpm_all.pl'
+alias label2up 'python ~eukalip/bin/label2up.py \!:1'
+alias differ '/proj/wcdma-userarea/users/emarzbi/differ/differ.sh \!:1'
+alias decoder.pl "/app/decoder/Y14W47/bin/decoder.pl"
+alias flowfox.pl "~/ltetools/./flowfox"
+alias vless "/app/vim/.sys/amd64_linux26/7.3.021/LMWP3/share/vim/vim73/macros/less.sh"
+unalias moshell
+alias moshell "/app/moshell/latest/moshell/moshell"
+alias pycharm "/home/ealatet/pycharm-community-5.0.2/bin/./pycharm.sh"
+alias pep8 "~/my_project/python/pep8/pep8.py"
+
+##### MAO #####
+setenv MAO '/vobs/rnc/rrt/roam2/roamSs/RoamMao_swb/'
+setenv MAOMOM "/vobs/rnc/rrt/roam2/roamSs/RoamMao_swb/GenericMo_swu/xml/rnc_designmom.xml"
+setenv MOM "/vobs/rnc/rncNode/rnc.rose/mom/rncmom.xml"
+
+alias Mao "cd $MAO"
+alias MaoMom "cd /vobs/rnc/rrt/roam2/roamSs/RoamMao_swb/GenericMo_swu/xml/"
+alias Mom "cd /vobs/rnc/rncNode/rnc.rose/mom/"
+
+##### AUE #####
+setenv AUE '/vobs/rnc/rrt/roam2/roamSs/RoamAue_swb/'
+setenv MODAUE '/vobs/rnc/rrt/roam2/roamSs/RoamAue_swb/RoamAueModules_swu/'
+
+alias Aue "cd $AUE"
+alias ModAue "cd $MODAUE"
+
+##### FRO #####
+setenv FROBL '/vobs/rnc/sw/roam1/roamSs/roamFroBl'
+setenv FROIF '/vobs/rnc/sw/roam1/roamSsIf'
+alias FroBl "cd $FROBL"
+alias FroIf "cd $FROIF"
+
+alias RoseFroModel 'RoseRT /vobs/rnc/rrt/roam1/roamSs/roamFroBl/roamFroBlTest/rncTopFroTestPkg/model/RncTopFroBlUModel.rtwks &'
+
+## FRO PDT aliases ##
+alias FroSetDevCs 'setenv BLOCK_LIST_PATH $BLOCK_LIST_PATH/roam; set_dev_cs; setenv BLOCK_LIST_PATH /vobs/rnc/rrt/tools/prod/ki_tools/pdt'
+alias FroRebase 'setenv BLOCK_LIST_PATH $BLOCK_LIST_PATH/roam; rebase_block; setenv BLOCK_LIST_PATH /vobs/rnc/rrt/tools/prod/ki_tools/pdt'
+alias FroMerge 'setenv BLOCK_LIST_PATH $BLOCK_LIST_PATH/roam; merge_block; setenv BLOCK_LIST_PATH /vobs/rnc/rrt/tools/prod/ki_tools/pdt'
+alias FroLabel 'setenv BLOCK_LIST_PATH $BLOCK_LIST_PATH/roam; label_block; setenv BLOCK_LIST_PATH /vobs/rnc/rrt/tools/prod/ki_tools/pdt'
+alias FroStartDelivery 'setenv BLOCK_LIST_PATH $BLOCK_LIST_PATH/roam; start_delivery; setenv BLOCK_LIST_PATH /vobs/rnc/rrt/tools/prod/ki_tools/pdt'
+alias FroStopDelivery 'setenv BLOCK_LIST_PATH $BLOCK_LIST_PATH/roam; stop_delivery; setenv BLOCK_LIST_PATH /vobs/rnc/rrt/tools/prod/ki_tools/pdt'
+alias FroCheckIn 'setenv BLOCK_LIST_PATH $BLOCK_LIST_PATH/roam ;  checkin_block; setenv BLOCK_LIST_PATH /vobs/rnc/rrt/tools/prod/ki_tools/pdt'
+
+##### RNH #####
+setenv RNHSS "/vobs/rnc/sw/rnh/rnhSs"
+setenv RNHIF "/vobs/rnc/sw/rnh/rnhSsIf"
+alias RnhSs "cd $RNHSS"
+alias RnhIf "cd $RNHIF"
+
+##### ART #####
+setenv WCDMASTE_ROOT /proj/rnckidc/wcdmaroot_rnc_xft
+setenv WCDMASTE_PRIVATENETWORKS "$WCDMASTE_ROOT/rnc/PrivateNetworks/ejakgra/"
+setenv UTE_TOP /vobs/rnc/ute
+setenv UTE_TEST_TOP /vobs/rnc/uteUsers
+setenv ART_SERVER esekilx4065137
+
+alias ArtSsh 'ssh -t -X $ART_SERVER '
+alias lspool "~/repo/art_ata/artfw/tools/art/bin/lspool xft"
+alias ste "~/repo/art_ata/artfw/tools/art/bin/ste.sh"
+alias ArtToolBox "ste"
+alias ArtFindHost "lspool xft"
+alias ArtCreateCfg "create_cfg"
+alias ArtRun "run_art -spec ~/art/art.spec"
+alias ArtCompileUTE "compile_ute"
+
+##### Node #####
+setenv NODE_3820_IP '10.74.57.216'
+setenv NODE_EVO_IP '10.74.57.66'
+setenv NODE_TGS_IP '10.74.57.93'
+alias moshell3820 'moshell  ${NODE_3820_IP}'
+alias moshellEvo 'moshell  ${NODE_EVO_IP}'
+alias moshellTgs 'moshell  ${NODE_TGS_IP}'
+
+
+# ##### stuff #####
+# if ( $?RTS_HOME ) then
+#   setenv RTS_TYPE_DESCRIPTORS_DEFS $RTS_HOME/include/RTObject_class.h
+# endif
+# 
+# #Added Sibelius aliases on: Thu Jun 20 14:11:31 CEST 2013 BEGIN
+# if( -e $GIT/rnc/struct/roamSs/roamFroBl/pysibelius/bin/aliases ) then
+#     source $GIT/rnc/struct/roamSs/roamFroBl/pysibelius/bin/aliases
+# endif
+# #Added Sibelius aliases on: Thu Jun 20 14:11:31 CEST 2013 END
+# ## FRO & Psybelius Environment ###
+# 
+# ### Uncomment if needed
+# 
+# 
+# 
+# if (`uname` == "Linux") then
+#  setenv CS_IF_NAME "eth1"
+#  setenv CS_BROADCAST_PORT `id -u`
+# else
+#  setenv CS_IF_NAME `netstat -i | awk /$HOST/'{print $1}' | head -1`
+#  setenv CS_BROADCAST_PORT `/usr/xpg4/bin/id -u`
+#  setenv CS_GWS_SERVER_PORT `/usr/xpg4/bin/id -u`
+#  setenv OSE_GWS_SERVER_PORT `/usr/xpg4/bin/id -u`
+#  setenv TTCN3_OSE_GW_ADDRESS tcp://localhost:`/usr/xpg4/bin/id -u`
+# endif
+# 
+# 
+# 
+# if( -e $GIT/rnc/sw/roam1/roamSs/roamFroBl/pysibelius/bin/setup.env ) then
+# source $GIT/rnc/sw/roam1/roamSs/roamFroBl/pysibelius/bin/setup.env
+# endif
+# 
+# 
+# if ( -e $GIT/rnc/sw/roam1/roamSs/roamFroBl/pysibelius/bin/aliases ) then
+# source $GIT/rnc/sw/roam1/roamSs/roamFroBl/pysibelius/bin/aliases
+# endif
+# 
+# 
+# 
+# #Added Sibelius aliases on: Thu Dec 4 14:05:06 CET 2014 BEGIN
+# if ( ! $?GIT ) then
+#     if( -e /vobs/rnc/struct/roamSs/roamFroBl/pysibelius/bin/aliases) then
+#        source /vobs/rnc/struct/roamSs/roamFroBl/pysibelius/bin/aliases
+#     endif
+# else
+#      if( -e ${GIT}rnc/struct/roamSs/roamFroBl/pysibelius/bin/aliases) then
+#        source ${GIT}rnc/struct/roamSs/roamFroBl/pysibelius/bin/aliases
+#     endif
+# endif
+# #Added Sibelius aliases on: Thu Dec 4 14:05:06 CET 2014 END
