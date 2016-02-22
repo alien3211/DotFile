@@ -107,7 +107,8 @@ setenv no_proxy "localhost, 127.0.0.1, .ericsson.se, .ericsson.com"
 #alias precmd set 'prompt="`getCurrentSHA``getCurrentGitBranch``python /home/ealatet/my_project/python/prompt/makeprompt.py `"'
 
 #### Aliases ####
-source ~/.aliases
+source ~/DotFile/.aliases
+source ~/DotFile/.work_aliases
  
 #source /home/ealatet/TTK/Config/TTKAlias.sh
  

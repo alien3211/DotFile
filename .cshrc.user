@@ -17,5 +17,4 @@ if (`uname` == Linux) then
 endif
 
 #### Aliases ####
-source ~/.aliases
- 
+source ~/DotFile/.aliases

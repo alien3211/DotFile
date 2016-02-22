@@ -49,7 +49,7 @@ set    c_sha="%{\\e[1;90m%}"    # same
 set      end="%{\\e[0m%}"
 set    p_end="%{\e[0m%}"
  
-alias getCurrentGitSHABranch '~/my_project/gitprompt.pl'
+alias getCurrentGitSHABranch '~/my_project/perl/gitprompt.pl'
 alias getCurrentHostName 'printf "%s" "\[$c_hname%n@%m$p_end\]$c_send"'
 alias getCurrentDir 'pwd | sed "s/\(.*\)/$end\[$c_dir\1$end\]/"'
  

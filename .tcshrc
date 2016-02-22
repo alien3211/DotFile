@@ -54,7 +54,7 @@ source $HOME/DotFile/.tcshrc.complete
 source $HOME/DotFile/.tcshrc.local
 
 #	local settings
-source $HOME/DotFile/.cshrc.user
+source $HOME/DotFile/.work_cshrc.user
 
 #        commands for interactive shells
 ## FIXME this is an example, shows date and current directory
