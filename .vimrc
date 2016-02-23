@@ -54,6 +54,8 @@ set showmatch                     " When a bracket is inserted, briefly jump to 
 "set cursorline                    " highlights the current lines
 "set scrolloff=5                   " always show 5 line before and after cursor
 "set listchars=tab:*-,trail:·      " set char replacing tab and space at the ends of lines
+hi CursorLine   cterm=NONE ctermbg=234 ctermfg=white
+set cursorline
 
 " colorscheme
 set t_Co=256                      " 256 kolorow
@@ -137,6 +139,20 @@ set laststatus=2
 " let g:airline_powerline_fonts=1
 set t_Co=256
 set guifont=Liberation\ Mono\ for\ Powerline\ 10
+if !exists("g:airline_symbols")
+    let g:airline_symbols = {}
+endif
+" let g:airline_theme="powerlineish"
+" let g:airline_powerline_fonts=1
+let g:airline#extensions#branch#empty_message = "no .git"
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+" let g:airline#extensions#tabline#fnamecollapse = 1 " /a/m/model.rb
+" let g:airline#extensions#hunks#non_zero_only = 1 " git gutter
+
+
 
 " Function hightlight next search
 function! HLNext ()
