@@ -1,4 +1,7 @@
 " $HOME/.vimrc -- a configuration file for Vi IMproved
+let $VIMRUNTIME="/app/vim/7.4.005/LMWP3/share/vim/vim74"
+set runtimepath=~/.vim,/usr/share/vim/vimfiles/,/app/vim/7.4.005/LMWP3/share/vim/vim74,/usr/share/vim/vimfiles/after
+
 
 " General settings:
 set nocompatible                  " Disable Vi-compatible mode
