@@ -1,5 +1,36 @@
 " $HOME/.vimrc -- a configuration file for Vi IMproved
 
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+"
+"Vundle BEGIN PLUGIN
+Plugin ('VundleVim/Vundle.vim')
+Plugin ('yegappan/grep')
+Plugin ('yegappan/mru')
+Plugin ('kien/ctrlp.vim')
+Plugin ('gavinbeatty/dragvisuals.vim')
+Plugin ('mileszs/ack.vim')
+Plugin ('scrooloose/nerdtree')
+Plugin ('vim-scripts/OmniCppComplete')
+Plugin ('ervandew/supertab')
+Plugin ('majutsushi/tagbar')
+Plugin ('vim-airline/vim-airline')
+Plugin ('vim-airline/vim-airline-themes')
+Plugin ('tpope/vim-fugitive')
+
+call vundle#end()            
+"Vundle END PLUGIN
+
+
 " General settings:
 set nocompatible                  " Disable Vi-compatible mode
 set magic                         " Use classic regular expressions
@@ -18,6 +49,7 @@ set spelllang=en_us,en,pl         " Specify the spell checking language
 set nospell                       " Disable spell checking by default
 filetype on                       " Enable file type detection
 filetype plugin on                " Enable file type plug-ins
+filetype plugin indent on         " required tu Vundle
 runtime ftplugin/man.vim          " Enable plugin man
 set directory=~/.vim/tmp/swap     " Directory to swap file
 helptags ~/.vim/doc               " Directory to help file
