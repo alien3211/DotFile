@@ -13,19 +13,19 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 "
 "Vundle BEGIN PLUGIN
-Plugin ('VundleVim/Vundle.vim')
-Plugin ('yegappan/grep')
-Plugin ('yegappan/mru')
-Plugin ('kien/ctrlp.vim')
-Plugin ('gavinbeatty/dragvisuals.vim')
-Plugin ('mileszs/ack.vim')
-Plugin ('scrooloose/nerdtree')
-Plugin ('vim-scripts/OmniCppComplete')
-Plugin ('ervandew/supertab')
-Plugin ('majutsushi/tagbar')
-Plugin ('vim-airline/vim-airline')
-Plugin ('vim-airline/vim-airline-themes')
-Plugin ('tpope/vim-fugitive')
+Plugin 'yegappan/grep'
+Plugin 'yegappan/mru'
+Plugin 'sjl/gundo.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'gavinbeatty/dragvisuals.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/OmniCppComplete'
+Plugin 'ervandew/supertab'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()            
 "Vundle END PLUGIN
@@ -106,7 +106,6 @@ autocmd BufReadPost * if line("'\"") && line("'\"") <= line("$") |
    \ exe "normal `\"" | endif
 
 " Useful mapingC
-map <F5> :w <CR> :!g++ --std=c++11 %; ./a.out <CR>
 map <F7> :set filetype=tracelog <CR>
 nmap <silent> <C-H> :call NoHLSearch()<CR> :noh <CR>  " nohlsearching and deleteall matches
 map <F6> :checkt <CR>
@@ -139,6 +138,12 @@ map <leader>et :tabe <C-R>=expand("%:p:h") . "/" <CR>
 " pathogen
 execute pathogen#infect()
 
+" Gundo
+nnoremap <F5> :GundoToggle<CR>
+let g:gundo_width = 60
+let g:gundo_preview_height = 40
+let g:gundo_right = 1
+
 " Configure the NERDTree plug-in:
 let g:NERDTreeWinPos = 'left'           " Place the window to the left
 let g:NERDTreeWinSize = 40              " Change the window width
@@ -159,7 +164,6 @@ inoremap <Down> <Esc>g<Down>a
 " Configure the Tagbar plug-in:
 let g:tagbar_left = 0                 " Place the window to the right
 let g:tagbar_width = 40               " Change the window width
-let g:tagbar_ctags_bin='/home/ealatet/bin/ctags' 
 nmap <silent> <F12> :TagbarToggle<CR>
 imap <silent> <F12> <ESC>:TagbarToggle<CR>
 cmap <silent> <F12> <ESC>:TagbarToggle<CR>

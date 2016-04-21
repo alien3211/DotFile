@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_cnt =8
 let g:netrw_dirhist_1='/vobs'
 let g:netrw_dirhist_2='/'
 let g:netrw_dirhist_3='/home'
@@ -7,3 +7,4 @@ let g:netrw_dirhist_4='/home/ealatet'
 let g:netrw_dirhist_5='/home/ealatet/my_project'
 let g:netrw_dirhist_6='/home/ealatet/my_project/tmux'
 let g:netrw_dirhist_7='/view/eiwodob_view/vobs/rnc/sw/sp/spSs/spRlcBl/spRlcTest/conf/dcsTestConf/block_test.conf@@/main/dev/eiwodob_bootcamp'
+let g:netrw_dirhist_8='/repo/ealatet/oam_plugin'
