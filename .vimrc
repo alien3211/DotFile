@@ -54,9 +54,13 @@ set showmatch                     " When a bracket is inserted, briefly jump to 
 "set cursorline                    " highlights the current lines
 "set scrolloff=5                   " always show 5 line before and after cursor
 "set listchars=tab:*-,trail:·      " set char replacing tab and space at the ends of lines
-hi CursorLine   cterm=NONE ctermbg=234 ctermfg=white
-set cursorline
+
 let mapleader=','
+
+" hightlight
+highlight BadWhitespace ctermbg=red guibg=red
+highlight CursorLine cterm=NONE ctermbg=234 ctermfg=white
+set cursorline
 
 " colorscheme
 set t_Co=256                      " 256 kolorow
@@ -121,10 +125,84 @@ if has("multi_byte")
   set fileencodings=ucs-bom,utf-8,latin1
 endif
 
+" C
+au BufRead,BufNewFile *.c,*.h set expandtab
+au BufRead,BufNewFile *.c,*.h set tabstop=4
+au BufRead,BufNewFile *.c,*.h set shiftwidth=4
+au BufRead,BufNewFile *.c,*.h set autoindent
+au BufRead,BufNewFile *.c,*.h match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.c,*.h match BadWhitespace /\s\+$/
+au         BufNewFile *.c,*.h set fileformat=unix
+au BufRead,BufNewFile *.c,*.h let b:comment_leader = '/* '
+
+" Java
+au BufRead,BufNewFile *.java set expandtab
+au BufRead,BufNewFile *.java set tabstop=4
+au BufRead,BufNewFile *.java set shiftwidth=4
+au BufRead,BufNewFile *.java set autoindent
+au BufRead,BufNewFile *.java match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.java match BadWhitespace /\s\+$/
+au         BufNewFile *.java set fileformat=unix
+au BufRead,BufNewFile *.java let b:comment_leader = '//'
+
+" Python, PEP-008
+au BufRead,BufNewFile *.py,*.pyw set expandtab
+au BufRead,BufNewFile *.py,*.pyw set textwidth=139
+au BufRead,BufNewFile *.py,*.pyw set tabstop=4
+au BufRead,BufNewFile *.py,*.pyw set softtabstop=4
+au BufRead,BufNewFile *.py,*.pyw set shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw set autoindent
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /\s\+$/
+au         BufNewFile *.py,*.pyw set fileformat=unix
+au BufRead,BufNewFile *.py,*.pyw let b:comment_leader = '#'
+
+" JS
+au BufRead,BufNewFile *.js set expandtab
+au BufRead,BufNewFile *.js set tabstop=4
+au BufRead,BufNewFile *.js set softtabstop=4
+au BufRead,BufNewFile *.js set shiftwidth=4
+au BufRead,BufNewFile *.js set autoindent
+au BufRead,BufNewFile *.js match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.js match BadWhitespace /\s\+$/
+au         BufNewFile *.js set fileformat=unix
+au BufRead,BufNewFile *.js let b:comment_leader = '//'
+
+" Makefile
+au BufRead,BufNewFile Makefile* set noexpandtab
+
+" XML
+au BufRead,BufNewFile *.xml set expandtab
+au BufRead,BufNewFile *.xml set tabstop=4
+au BufRead,BufNewFile *.xml set softtabstop=4
+au BufRead,BufNewFile *.xml set shiftwidth=4
+au BufRead,BufNewFile *.xml set autoindent
+au BufRead,BufNewFile *.xml match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.xml match BadWhitespace /\s\+$/
+au         BufNewFile *.xml set fileformat=unix
+au BufRead,BufNewFile *.xml let b:comment_leader = '<!--'
+
+" HTML
+au BufRead,BufNewFile *.html set filetype=xml
+au BufRead,BufNewFile *.html set expandtab
+au BufRead,BufNewFile *.html set tabstop=4
+au BufRead,BufNewFile *.html set softtabstop=4
+au BufRead,BufNewFile *.html set shiftwidth=4
+au BufRead,BufNewFile *.html set autoindent
+au BufRead,BufNewFile *.html match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.html match BadWhitespace /\s\+$/
+au         BufNewFile *.html set fileformat=unix
+au BufRead,BufNewFile *.html let b:comment_leader = '<!--'
 
 " ============================================================================
 " Python IDE Setup
 " ============================================================================
+
+
+" Auto-complate
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 " Airline
 set laststatus=2
 " let g:airline_powerline_fonts=1
@@ -254,21 +332,39 @@ vmap <expr> L   DVB_Drag('right')
 vmap <expr> J   DVB_Drag('down')
 vmap <expr> K   DVB_Drag('up')
 
-" configuration OmniCppComplete
-map <F3> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q ~/.vim/tags/<CR>
 
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
-let OmniCpp_MayCompleteDot = 1 " autocomplete after .
-let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
-let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-let OmniCpp_ShowPrototypeInAbbr = 1
-let OmniCpp_DisplayMode = 1
-let OmniCpp_ShowScopeInAbbr = 1
-let OmniCpp_SelectFirstItem = 2
-let OmniCpp_NamespaceSearch = 2
+" ultisnips
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " Configuration bufexplorer
 nnoremap <silent> <unique> <leader>b :BufExplorer<CR>
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+nnoremap <unique> <leader>sy :SyntasticCheck<CR>
+
+
+
+" ============================================================================
+" JS IDE Setup
+" ============================================================================
+
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
+
+
