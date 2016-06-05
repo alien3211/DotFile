@@ -1,0 +1,75 @@
+[submodule "ack.vim"]
+    path =  .vim/bundle/ack.vim
+    url = https://github.com/mileszs/ack.vim
+[submodule "bufexplorer"]
+    path =  .vim/bundle/bufexplorer
+    url = https://github.com/jlanzarotta/bufexplorer 
+[submodule "ctrlp.vim"]
+    path =  .vim/bundle/ctrlp.vim
+    url = https://github.com/kien/ctrlp.vim
+[submodule "dragvisuals.vim"]
+    path =  .vim/bundle/dragvisuals.vim
+    url = https://github.com/atweiden/vim-dragvisuals
+[submodule "grep"]
+    path =  .vim/bundle/grep
+    url = https://github.com/yegappan/grep
+[submodule "gundo.vim"]
+    path =  .vim/bundle/gundo.vim
+    url = https://github.com/sjl/gundo.vim
+[submodule "indentpython.vim"]
+    path =  .vim/bundle/indentpython.vim
+    url = https://github.com/vim-scripts/indentpython.vim
+[submodule "jedi-vim"]
+    path =  .vim/bundle/jedi-vim
+    url = https://github.com/davidhalter/jedi-vim
+[submodule "mru"]
+    path =  .vim/bundle/mru
+    url = https://github.com/yegappan/mru
+[submodule "nerdcommenter"]
+    path =  .vim/bundle/nerdcommenter
+    url =  https://github.com/scrooloose/nerdcommenter
+[submodule "nerdtree"]
+    path =  .vim/bundle/nerdtree
+    url = https://github.com/scrooloose/nerdtree
+[submodule "python-mode"]
+    path =  .vim/bundle/python-mode
+    url = https://github.com/klen/python-mode
+[submodule "syntastic"]
+    path =  .vim/bundle/syntastic
+    url = https://github.com/scrooloose/syntastic
+[submodule "tlib_vim"]
+    path =  .vim/bundle/tlib_vim
+    url = https://github.com/tomtom/tlib_vim
+[submodule "ultisnips"]
+    path =  .vim/bundle/ultisnips
+    url = https://github.com/SirVer/ultisnips
+[submodule "vim-addon-mw-utils"]
+    path =  .vim/bundle/vim-addon-mw-utils
+    url = https://github.com/MarcWeber/vim-addon-mw-utils
+[submodule "vim-airline"]
+    path =  .vim/bundle/vim-airline
+    url = https://github.com/vim-airline/vim-airline
+[submodule "vim-airline-themes"]
+    path =  .vim/bundle/vim-airline-themes
+    url = https://github.com/vim-airline/vim-airline-themes
+[submodule "vim-fugitive"]
+    path =  .vim/bundle/vim-fugitive
+    url = https://github.com/tpope/vim-fugitive
+[submodule "vim-gitgutter"]
+    path =  .vim/bundle/vim-gitgutter
+    url = https://github.com/airblade/vim-gitgutter
+[submodule "vim-snipmate"]
+    path =  .vim/bundle/vim-snipmate
+    url = https://github.com/garbas/vim-snipmate
+[submodule "vim-snippets"]
+    path =  .vim/bundle/vim-snippets
+    url = https://github.com/honza/vim-snippets
+[submodule "YouCompleteMe"]
+    path =  .vim/bundle/YouCompleteMe
+    url = https://github.com/Valloric/YouCompleteMe
+[submodule "tagbar"]
+    path =  .vim/bundle/tagbar
+    url = https://github.com/majutsushi/tagbar
+
+
+

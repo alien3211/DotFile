@@ -205,7 +205,7 @@ map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Airline
 set laststatus=2
-" let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts=1
 set t_Co=256
 set guifont=Liberation\ Mono\ for\ Powerline\ 10
 if !exists("g:airline_symbols")
